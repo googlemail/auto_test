@@ -2,6 +2,7 @@ import win32api,win32con,win32gui
 import time
 import sys
 import psutil
+import requests
 VK_CODE = {
     'backspace':0x08,
     'tab':0x09,
@@ -189,6 +190,7 @@ def check(jubing):
     time.sleep(0.2)
     win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
     time.sleep(0.05)
+    time.sleep(1.5)
 
 def find_idxSubHandle(pHandle, winClass, index=0):
     assert type(index) == int and index >= 0
@@ -214,40 +216,70 @@ class GenWindow():
         print("%x" % (handle))
         return handle
 
-##qq = FaceGenWindow("MsiDialogCloseClass")
-##jubin = qq.jubing([(["Button",'&Next'], 0),])
-##check(jubin)
-##qq = FaceGenWindow("MsiDialogCloseClass")
-##jubin = qq.jubing([(["Button",'I &accept the terms in the License Agreement'], 0),])
 
-##qq = FaceGenWindow("MsiDialogCloseClass")
-##jubin = qq.jubing([(["Button",'B&rowse...'], 0),])
-##check(jubin)
-filename = sys.argv(1)
-url = "hettp://wwww.hao123.com/" + filename
-download_file(url)
-win32api.WinExec(filename)
-qq =GenWindow('MsiDialogCloseClass','ActiveState ActivePython 3.4.3.2 (64-bit) Setup')
-jubin = qq.jubing([(["RichEdit20W",''], 0),])
+#---------------------------------
+win32api.WinExec('C:\\Users\\Administrator\\Downloads\\1.exe')
+#------------------------------------------
+qq = FaceGenWindow("TSelectLanguageForm")
+jubin = qq.jubing([(["TNewButton",'确定'], 0),])
 check(jubin)
-key_input(str='d:\\python34\\www')
-jubin = qq.jubing([(["Button",'OK'], 0),])
+qq = FaceGenWindow("TWizardForm")
+jubin = qq.jubing([(["TNewButton",'下一步(&N) >'], 0),])
+check(jubin)
+#---------------------
+qq = FaceGenWindow("#32770 (对话框)")
+jubin = qq.jubing([(["Button",'确定'], 0),])
+check(jubin)
+time.sleep(1.5)
+check(jubin)
+#-------------------
+qq = FaceGenWindow("TWizardForm")
+jubin = qq.jubing([(["TNewNotebookPage",''], 0),(["TEdit",''], 0),])
+check(jubin)
+key_input(str='e:\\edo6')
+time.sleep(1.5)
+jubin = qq.jubing([(["TNewButton",'下一步(&N) >'], 0),])
+check(jubin)
+jubin = qq.jubing([(["TNewButton",'下一步(&N) >'], 0),])
+check(jubin)
+jubin = qq.jubing([(["TNewButton",'下一步(&N) >'], 0),])
 check(jubin)
 
-r = requests.get('http://github.com', timeout=0.001)
-print(r.text)
+#-------------------
+qq = FaceGenWindow("#32770 (对话框)")
+jubin = qq.jubing([(["Button",'确定'], 0),])
+check(jubin)
+#-----------------------
+qq = FaceGenWindow("TWizardForm")
+jubin = qq.jubing([(["TNewButton",'安装(&I)'], 0),])
+check(jubin)
+#-----------------------
 
-allfuwu = ['wo','oc']
-live = []
-for fuwu in allfuwu:
-    r = requests.get('http://127.0.0.1/{}'.format(fuwu), timeout=5)
-    if r.status == '200':
-        live.append(fuwu)
-
-all_jincheng = {}
-for proc in psutil.process_iter():
-    alljincheng[proc.name()] = proc.cmdline()
-
-for one_jincheng in alljincheng.keys():
-    if one_jincheng in alljincheng:
-        live.append(one_jincheng)
+##filename = sys.argv(1)
+##url = "hettp://wwww.hao123.com/" + filename
+##download_file(url)
+##win32api.WinExec(filename)
+##qq =GenWindow('MsiDialogCloseClass','ActiveState ActivePython 3.4.3.2 (64-bit) Setup')
+##jubin = qq.jubing([(["RichEdit20W",''], 0),])
+##check(jubin)
+##key_input(str='d:\\python34\\www')
+##jubin = qq.jubing([(["Button",'OK'], 0),])
+##check(jubin)
+##
+##r = requests.get('http://github.com', timeout=0.001)
+##print(r.text)
+##
+##allfuwu = ['wo','oc']
+##live = []
+##for fuwu in allfuwu:
+##    r = requests.get('http://127.0.0.1/{}'.format(fuwu), timeout=5)
+##    if r.status == '200':
+##        live.append(fuwu)
+##
+##all_jincheng = {}
+##for proc in psutil.process_iter():
+##    alljincheng[proc.name()] = proc.cmdline()
+##
+##for one_jincheng in alljincheng.keys():
+##    if one_jincheng in alljincheng:
+##        live.append(one_jincheng)
